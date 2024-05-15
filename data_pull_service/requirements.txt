@@ -1,0 +1,6 @@
+polars
+requests
+bs4
+pyyaml
+tqdm
+lxml

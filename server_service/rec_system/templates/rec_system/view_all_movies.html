@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Rec System</title>
+</head>
+<body>
+    <div style="width: 100%;">
+        <table style="table-layout: fixed;">
+            <tr>
+                {% for table_key in movie_data_rows.0.keys %}
+                    <th>{{ table_key }}</th>
+                {% endfor %}
+            </tr>
+            {% for table_row in movie_data_rows %}
+                <tr>
+                    {% for key, value in table_row.items %}
+                        <td style="word-break: break-all; font-size: 8pt;">{{ value }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

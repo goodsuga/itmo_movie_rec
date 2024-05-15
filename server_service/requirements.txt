@@ -1,0 +1,5 @@
+django
+polars
+requests
+bs4
+pyyaml

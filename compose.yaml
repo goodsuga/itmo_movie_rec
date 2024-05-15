@@ -1,0 +1,21 @@
+services:
+  # Сервер
+  movie-rec-server-service:
+    image: movie-rec-server-service:latest
+    command: "python ./manage.py runserver 0.0.0.0:8000"
+    ports:
+      - 8000:8000
+    volumes:
+      - /home/a/Desktop/ИТМО/itmo_movie_rec/:/app_root
+      - /home/a/Desktop/ИТМО/itmo_movie_rec/data_pull_service/data_requests/:/app_root/data_pull_service/data_requests/
+      - /home/a/Desktop/ИТМО/itmo_movie_rec/movie_data/:/app_root/movie_data/
+      - /home/a/Desktop/ИТМО/itmo_movie_rec/configurations/:/app_root/configurations/
+  
+  # Сервис подгрузки данных о фильмах с Вики
+  movie-rec-data-pull-service:
+    image: movie-rec-data-pull-service:latest
+    command: "python ./data_pull_service.py"
+    volumes:
+      - /home/a/Desktop/ИТМО/itmo_movie_rec/:/app_root
+      - /home/a/Desktop/ИТМО/itmo_movie_rec/data_pull_service:/app_root/data_pull_service/
+      - /home/a/Desktop/ИТМО/itmo_movie_rec/movie_data:/app_root/movie_data/
