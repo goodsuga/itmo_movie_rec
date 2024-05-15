@@ -1,0 +1,20 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build Server Service
+      run: docker build . --file server_service/Dockerfile --tag movie-rec-server-service:latest
+    - name: Build Data Pull Service
+      run: docker build . --file data_pull_service/Dockerfile --tag movie-rec-data-pull-service:latest
